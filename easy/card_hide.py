@@ -19,9 +19,7 @@ card_hide("35123413355523") ➞   "**********5523"
 
 def card_hide(nbr_card: str) -> str:
     '''Возвращает номер карты спрятаный * кроме последних 4 цифр.'''
-    return f'{"*" * (len(nbr_card) - 4)}{nbr_card[-4:]}' \
-           if len(nbr_card) >= 4 \
-           else nbr_card
+    return f'{"*" * (len(nbr_card) - 4)}{nbr_card[-4:]}'
 
 
 
