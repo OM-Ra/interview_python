@@ -18,6 +18,8 @@ rot("Ok, now try rot 6", offset = 6) -> "Uq, tuc zxe xuz 6"
 from string import ascii_lowercase, ascii_uppercase
 
 def rot(line: str, offset: int =13) -> str:
+    # Защита от выхода за допустимый интервал (26 букв английского алфавита).
+    offset %= 26
     # Изменение строки и возврат результата.
     return line.translate(
         # Шаблон изменения.
@@ -36,7 +38,10 @@ tests = (
     (("EBG13 rknzcyr.",), "ROT13 example."),
     (("AaBbCcLl.",), "NnOoPpYy."),
     (("Ok, now try rot 6", 6), "Uq, tuc zxe xuz 6"),
-    (("Uq, tuc zxe xuz 6", -6), "Ok, now try rot 6")
+    (("Uq, tuc zxe xuz 6", -6), "Ok, now try rot 6"),
+    (("Ok, now try rot 6", 0), "Ok, now try rot 6"),
+    (("Ok, now try rot 6", 72), "Ie, hiq nls lin 6"),
+    (("Ie, hiq nls lin 6", -72), "Ok, now try rot 6"),
 )
 
 for index, item in enumerate(tests):
