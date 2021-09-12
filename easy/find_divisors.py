@@ -18,7 +18,7 @@ def find_divisors(nbr: int) -> List[int] or str:
     # Функция для проверки деления числа nbr нацело divisor.
     func = lambda divisor: not (nbr % divisor)
     # Получение списка с числами делящих число nbr нацело.
-    res = list(filter(func, range(2, nbr)))
+    res = list(filter(func, range(2, nbr // 2 + 1)))
     # По списку res определяется возвращаемый ответ.
     return res if res else f'{nbr} - простое число'
 
